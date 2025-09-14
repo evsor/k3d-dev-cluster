@@ -1,0 +1,22 @@
+---
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: dev
+servers: 3
+agents: 3
+image: rancher/k3s:v1.33.4-k3s1-amd64
+ports:
+  - port: 8080:80
+    nodeFilters:
+      - loadbalancer
+options:
+  k3d:
+    wait: true
+    timeout: "60s"
+  k3s:
+    extraArgs:
+      - arg: --flannel-backend=none
+      - arg: --disable-network-policy
+  kubeconfig:
+    switchCurrentContext: true
