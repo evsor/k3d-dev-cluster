@@ -1,0 +1,42 @@
+---
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: dev
+servers: 1
+agents: 2
+kubeAPI:
+  hostIP: "0.0.0.0"
+  hostPort: "6443"
+image: rancher/k3s:v1.33.4-k3s1-amd64
+subnet: "172.20.0.0/16"
+options:
+  k3d:
+    wait: true
+    timeout: "60s"
+    disableLoadbalancer: true
+  k3s:
+    extraArgs:
+      - arg: --flannel-backend=none
+        nodeFilters:
+          - server:*
+      - arg: --disable-network-policy
+        nodeFilters:
+          - server:*
+      - arg: --disable-kube-proxy
+        nodeFilters:
+          - server:*
+      - arg: --cluster-cidr=10.42.0.0/16
+        nodeFilters:
+          - server:*
+      - arg: --service-cidr=10.42.0.0/16
+        nodeFilters:
+          - server:*
+      - arg: --disable=traefik
+        nodeFilters:
+          - server:*
+      - arg: --disable=servicelb
+        nodeFilters:
+          - server:*
+  kubeconfig:
+    switchCurrentContext: true
