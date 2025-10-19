@@ -1,3 +1,5 @@
+fullnameOverride: "argocd"
+
 global:
   domain: argocd.local
 
