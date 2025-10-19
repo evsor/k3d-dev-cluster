@@ -70,3 +70,6 @@ fi
 # Install ArgoCD
 helm repo add argo https://argoproj.github.io/argo-helm
 helm install argo-cd argo/argo-cd --namespace argocd --create-namespace --values values/argocd.yaml
+
+# Add root ArgoCD Application
+kubectl apply -f apps/argocd-root.yaml
