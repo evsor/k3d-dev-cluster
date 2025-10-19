@@ -4,13 +4,3 @@ global:
 configs:
   params:
     server.insecure: true
-
-server:
-  httproute:
-    enabled: true
-    parentRefs:
-      - name: demo-gateway
-        namespace: demo
-        sectionName: http
-    hostnames:
-      - argocd.local

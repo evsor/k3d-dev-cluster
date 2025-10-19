@@ -5,10 +5,16 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: 'https://github.com/evsor/k3d-dev-cluster.git'
-    targetRevision: main
-    path: values/argocd.yaml
+  sources:
+  - repoURL: 'https://argoproj.github.io/argo-helm'
+    chart: argo-cd
+    targetRevision: 9.0.1
+    helm:
+      valueFiles:
+      - $values/values/argocd.yaml
+  - repoURL: 'https://github.com/evsor/k3d-dev-cluster.git'
+    targetRevision: HEAD
+    ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
