@@ -57,7 +57,7 @@ echo "iface: $IFACE"
 if [[ -z "$LB_IP" ]]; then
   echo "Error: Load Balancer IP not found. Skipping route update."
 elif [[ -z "$IFACE" ]]; then
-  echo "Error: Network interface not found for subnet 172.20. Skipping route update."
+  echo "Error: Network interface not found for subnet 172.20.*.* Skipping route update."
 else
   # Check if route already exists
   if ip route show | grep -q "^$LB_IP "; then
