@@ -42,6 +42,31 @@ else
   echo "Skipping Cilium connectivity tests."
 fi
 
+# Install LB pool and Gateway resources
+kubectl apply -f gateway-api/lb-pool.yaml
+kubectl apply -f gateway-api/gateway.yaml
+
+# Update routing table on host to point to Load Balancer IP
+echo "Configuring host routing table..."
+LB_IP=$(kubectl get gateway shared-gateway -o jsonpath='{.status.addresses[0].value}' -n default)
+echo "Load Balancer IP: $LB_IP"
+IFACE=$(ip -o addr show | awk -v ip="172.20" '$0 ~ ip {print $2'} | head -n1)
+echo "iface: $IFACE"
+
+# Check if LB_IP and IFACE are valid
+if [[ -z "$LB_IP" ]]; then
+  echo "Error: Load Balancer IP not found. Skipping route update."
+elif [[ -z "$IFACE" ]]; then
+  echo "Error: Network interface not found for subnet 172.20. Skipping route update."
+else
+  # Check if route already exists
+  if ip route show | grep -q "^$LB_IP "; then
+    echo "Route for $LB_IP already exists. Skipping."
+  else
+    sudo ip route add $LB_IP dev $IFACE && echo "Routing table updated." || echo "Failed to update routing table."
+  fi
+fi
+
 # Install ArgoCD
 helm repo add argo https://argoproj.github.io/argo-helm
 helm install argo-cd argo/argo-cd --namespace argocd --create-namespace --values values/argocd.yaml
