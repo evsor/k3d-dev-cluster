@@ -18,6 +18,7 @@ A reproducible local Kubernetes development environment using [k3d](https://k3d.
 - helm
 - cilium CLI
 
+
 ## Quick Start
 
 ```bash
@@ -30,6 +31,19 @@ This will:
 - Install Cilium
 - (Optionally) run Cilium connectivity tests
 - Install ArgoCD
+- Configure the host routing table for the Load Balancer IP
+
+## Cleanup
+
+To remove the resources created by the bootstrap script:
+
+```bash
+./cluster-cleanup.sh
+```
+
+This will:
+- Remove the route to the Load Balancer IP
+- Delete the k3d cluster
 
 ## Configuration
 
