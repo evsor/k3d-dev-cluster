@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-apps
+  name: argocd-root
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: 'https://github.com/evsor/k3d-dev-cluster.git'
     targetRevision: main
-    path: argocd/apps
+    path: apps
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
