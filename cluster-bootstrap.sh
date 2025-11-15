@@ -26,13 +26,9 @@ for crd in "${GATEWAY_API_CRDS[@]}"; do
   kubectl apply -f "https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v$GATEWAY_API_VERSION/config/crd/${crd}"
 done
 
-# Set kube context
-kubectl config use-context $CLUSTER_NAME
 # Install Cilium with Helm
 helm repo add cilium https://helm.cilium.io/
 helm install cilium cilium/cilium --version 1.18.2 --set k8sServiceHost=$MASTER_NODE_IP --values values/cilium.yaml --namespace kube-system
-# Alternatively, use Cilium CLI
-#cilium install --version 1.18.2 --context=$CLUSTER_NAME --set k8sServiceHost=$MASTER_NODE_IP --values values/cilium.yaml
 cilium status --wait
 
 if [ "$SKIP_CILIUM_TESTS" == "false" ]; then
