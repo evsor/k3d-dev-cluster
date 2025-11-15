@@ -43,8 +43,8 @@ else
 fi
 
 # Install LB pool and Gateway resources
-kubectl apply -f gateway-api/lb-pool.yaml
-kubectl apply -f gateway-api/gateway.yaml
+# kubectl apply -f gateway-api/lb-pool.yaml
+# kubectl apply -f gateway-api/gateway.yaml
 
 # Install ArgoCD
 helm repo add argo https://argoproj.github.io/argo-helm

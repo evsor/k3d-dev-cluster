@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: '-80'
+  name: gateway-api
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/evsor/k3d-dev-cluster.git'
+    targetRevision: main
+    path: cluster/components/gateway-api
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
