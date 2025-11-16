@@ -3,14 +3,14 @@ kind: Application
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: '-80'
-  name: gateway-api
+  name: shared-lb
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: 'https://github.com/evsor/k3d-dev-cluster.git'
     targetRevision: main
-    path: cluster/components/gateway-api
+    path: cluster/components/shared-lb
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
