@@ -44,4 +44,4 @@ helm repo add argo https://argoproj.github.io/argo-helm
 helm install argo-cd argo/argo-cd --namespace argocd --create-namespace --values values/argocd.yaml --wait --timeout 5m
 
 # Add root ArgoCD Application
-kubectl apply -f apps/argocd-root.yaml
+kubectl apply -f $BOOTSTRAP_PATH/argocd/argocd-root.yaml
