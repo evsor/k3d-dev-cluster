@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: '-90'
+  name: gatway-api-crds
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'oci://docker.io/envoyproxy/gateway-crds-helm'
+    targetRevision: v0.0.0-latest
+    path: .
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
