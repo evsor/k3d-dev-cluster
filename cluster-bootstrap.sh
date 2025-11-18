@@ -13,6 +13,9 @@ k3d cluster create --config $BOOTSTRAP_PATH/k3d/values.yaml
 MASTER_NODE_IP=$(kubectl --context $CLUSTER_NAME get node/$CLUSTER_NAME-server-0 -o wide --no-headers | awk '{ print $6 }')
 echo "Master Node IP: $MASTER_NODE_IP"
 
+# Install Gateway API CRDs
+helm template eg-crds oci://docker.io/envoyproxy/gateway-crds-helm --version v0.0.0-latest --set crds.gatewayAPI.enabled=true | kubectl apply --server-side -f -
+
 # Install Cilium with Helm
 helm repo add cilium https://helm.cilium.io/
 helm install cilium cilium/cilium --version 1.18.2 --set k8sServiceHost=$MASTER_NODE_IP --values $BOOTSTRAP_PATH/cilium/values.yaml --namespace kube-system

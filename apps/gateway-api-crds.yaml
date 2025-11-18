@@ -11,6 +11,11 @@ spec:
     repoURL: 'oci://docker.io/envoyproxy/gateway-crds-helm'
     targetRevision: v0.0.0-latest
     path: .
+    helm:
+      valuesObject:
+        crds:
+          gatewayAPI:
+            enabled: true
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
