@@ -6,10 +6,10 @@ metadata:
 servers: 1
 agents: 2
 kubeAPI:
-  hostIP: "0.0.0.0"
-  hostPort: "6443"
+  hostIP: "$KUBE_API_IP"
+  hostPort: "$KUBE_API_PORT"
 image: rancher/k3s:v1.33.4-k3s1-amd64
-subnet: "172.20.0.0/16"
+subnet: $CLUSTER_SUBNET
 options:
   k3d:
     wait: true
@@ -26,10 +26,10 @@ options:
       - arg: --disable-kube-proxy
         nodeFilters:
           - server:*
-      - arg: --cluster-cidr=10.42.0.0/16
+      - arg: --cluster-cidr=$NODES_SUBNET
         nodeFilters:
           - server:*
-      - arg: --service-cidr=10.42.0.0/16
+      - arg: --service-cidr=$NODES_SUBNET
         nodeFilters:
           - server:*
       - arg: --disable=traefik
