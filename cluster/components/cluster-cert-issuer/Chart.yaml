@@ -1,0 +1,9 @@
+apiVersion: v2
+name: cluster-cert-issuer
+description: Cluster Self-Signed Certificate Issuer using Cert-Manager
+
+type: application
+
+version: 0.1.0
+
+appVersion: "1.0"
