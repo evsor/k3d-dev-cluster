@@ -13,7 +13,7 @@ spec:
     path: cluster/components/cluster-cert-issuer
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: cert-manager
   syncPolicy:
     automated:
       prune: true
