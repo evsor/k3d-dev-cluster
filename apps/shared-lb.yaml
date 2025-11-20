@@ -13,7 +13,7 @@ spec:
     path: cluster/components/shared-lb
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: default
   syncPolicy:
     automated:
       prune: true
