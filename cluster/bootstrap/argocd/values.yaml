@@ -5,7 +5,7 @@ global:
 
 configs:
   params:
-    server.insecure: true
+    server.insecure: false
 
 server:
   httproute:
@@ -13,6 +13,6 @@ server:
     parentRefs:
       - name: shared-gateway
         namespace: default
-        sectionName: http
+        sectionName: https
     hostnames:
       - argocd.local

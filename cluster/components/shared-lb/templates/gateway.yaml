@@ -11,6 +11,8 @@ kind: Gateway
 metadata:
   name: shared-gateway
   namespace: default
+  annotations:
+    cert-manager.io/cluster-issuer: intermidiate-ca-issuer
 spec:
   gatewayClassName: cilium
   listeners:
@@ -20,3 +22,14 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+    - name: https
+      hostname: argocd.local
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: argocd-local-tls
