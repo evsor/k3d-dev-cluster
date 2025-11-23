@@ -5,7 +5,7 @@ global:
 
 configs:
   params:
-    server.insecure: true
+    server.insecure: false
 
 server:
   httproute:
