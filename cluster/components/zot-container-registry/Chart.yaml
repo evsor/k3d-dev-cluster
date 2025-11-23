@@ -1,0 +1,15 @@
+apiVersion: v2
+name: zot-container-registry
+description: Self Hosted OCI Container Registry
+
+type: application
+
+version: 0.1.0
+
+appVersion: "1.0"
+
+dependencies:
+- name: zot
+  alias: zot
+  version: 0.1.91
+  repository: http://zotregistry.dev/helm-charts

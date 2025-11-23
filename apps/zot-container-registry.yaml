@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: '-70'
+  name: zot-container-registry
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/evsor/k3d-dev-cluster.git'
+    targetRevision: main
+    path: cluster/components/zot-container-registry
+  helm:
+    valueFiles:
+    - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: zot-container-registry
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
