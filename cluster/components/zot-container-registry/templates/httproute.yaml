@@ -6,7 +6,7 @@ spec:
   parentRefs:
   - name: shared-gateway
     namespace: default
-    sectionName: https
+    sectionName: zot-https
   hostnames:
   - zot.local
   rules:

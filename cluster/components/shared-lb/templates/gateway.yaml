@@ -44,7 +44,7 @@ spec:
         mode: Terminate
         certificateRefs:
           - name: argocd-local-tls
-    - name: https
+    - name: zot-https
       hostname: zot.local
       port: 443
       protocol: HTTPS
