@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: '-80'
+  name: istio-base
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: 'https://istio-release.storage.googleapis.com/charts'
+    chart: istio-base
+    targetRevision: 1.28.0
+    helm:
+      parameters:
+      - name: "profile"
+        value: "ambient"
+      - name: "global.platform"
+        value: "k3d"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-system
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
