@@ -33,17 +33,6 @@ spec:
         mode: Terminate
         certificateRefs:
           - name: argocd-local-tls
-    - name: https
-      hostname: argocd.local
-      port: 443
-      protocol: HTTPS
-      allowedRoutes:
-        namespaces:
-          from: All
-      tls:
-        mode: Terminate
-        certificateRefs:
-          - name: argocd-local-tls
     - name: zot-https
       hostname: zot.local
       port: 443
