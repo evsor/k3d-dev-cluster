@@ -11,5 +11,5 @@ spec:
   - zot.local
   rules:
   - backendRefs:
-    - name: zot-container-registry 
+    - name: zot-container-registry
       port: 5000
