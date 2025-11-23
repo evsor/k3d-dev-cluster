@@ -1,3 +1,4 @@
 zot:
   metrics:
     enabled: true
+  persistence: true
