@@ -13,3 +13,7 @@ dependencies:
   alias: prometheus
   version: 27.46.0
   repository: https://prometheus-community.github.io/helm-charts
+- name: grafana
+  alias: grafana
+  version: 10.2.0
+  repository: https://grafana.github.io/helm-charts
