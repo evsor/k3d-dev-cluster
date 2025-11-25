@@ -1,0 +1,5 @@
+prometheus:
+  alertmanager:
+    enabled: false
+  prometheus-pushgateway:
+    enabled: false
