@@ -44,3 +44,14 @@ spec:
         mode: Terminate
         certificateRefs:
           - name: zot-local-tls
+    - name: prometheus-https
+      hostname: prometheus.local
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: prometheus-local-tls

@@ -1,4 +1,12 @@
 prometheus:
+  server.route:
+    enabled: true
+    parentRefs:
+    - name: shared-gateway
+      namespace: default
+      sectionName: prometheus-https
+    hostnames:
+    - prometheus.local
   alertmanager:
     enabled: false
   prometheus-pushgateway:
