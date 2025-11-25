@@ -55,3 +55,14 @@ spec:
         mode: Terminate
         certificateRefs:
           - name: prometheus-local-tls
+    - name: grafana-https
+      hostname: grafana.local
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: grafana-local-tls

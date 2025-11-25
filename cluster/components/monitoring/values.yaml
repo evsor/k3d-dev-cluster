@@ -13,3 +13,13 @@ prometheus:
     enabled: false
   prometheus-pushgateway:
     enabled: false
+grafana:
+  route:
+    main:
+      enabled: true
+      parentRefs:
+      - name: shared-gateway
+        namespace: default
+        sectionName: grafana-https
+      hostnames:
+      - grafana.local
