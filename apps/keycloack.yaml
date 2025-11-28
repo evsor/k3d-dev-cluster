@@ -11,6 +11,10 @@ spec:
   - repoURL: 'oci://registry-1.docker.io/bitnamicharts/keycloak'
     path: .
     targetRevision: 25.2.0
+    helm:
+      valuesObject:
+        image:
+          repository: bitnamilegacy/keycloak
   destination:
     server: https://kubernetes.default.svc
     namespace: keycloack
