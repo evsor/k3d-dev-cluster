@@ -66,3 +66,14 @@ spec:
         mode: Terminate
         certificateRefs:
           - name: grafana-local-tls
+    - name: keycloack-https
+      hostname: keyclock.local
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: keycloack-local-tls

@@ -1,0 +1,15 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: keyclock-http-route
+spec:
+  parentRefs:
+  - name: shared-gateway
+    namespace: default
+    sectionName: keycloack-https
+  hostnames:
+  - keycloack.local
+  rules:
+  - backendRefs:
+    - name: keycloack-keycloack
+      port: 80

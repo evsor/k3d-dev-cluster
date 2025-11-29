@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: '-70'
+  name: http-routes
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/evsor/k3d-dev-cluster.git'
+    targetRevision: main
+    path: cluster/components/http-routes
+  helm:
+    valueFiles:
+    - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: http-routes
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
