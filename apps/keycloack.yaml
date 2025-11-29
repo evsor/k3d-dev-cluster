@@ -20,9 +20,7 @@ spec:
             repository: bitnamilegacy/postgresql
         extraEnvVars:
           - name: KC_PROXY_HEADERS
-            value: 'forwarded'
-          - name: KC_PROXY
-            value: 'edge'
+            value: 'xforwarded'
   - repoURL: 'https://github.com/evsor/k3d-dev-cluster.git'
     targetRevision: main
     path: cluster/components/keycloack
