@@ -1,6 +1,0 @@
-keycloack:
-  image:
-    repository: bitnamilegacy/keycloak
-  postgresql:
-    image:
-      repository: bitnamilegacy/postgresql

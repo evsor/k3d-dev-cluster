@@ -7,9 +7,3 @@ type: application
 version: 0.1.0
 
 appVersion: "1.0"
-
-dependencies:
-- name: keycloack
-  alias: keycloack
-  version: 25.2.0
-  repository: oci://registry-1.docker.io/bitnamicharts/keycloak
