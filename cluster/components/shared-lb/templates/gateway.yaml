@@ -67,7 +67,7 @@ spec:
         certificateRefs:
           - name: grafana-local-tls
     - name: keycloack-https
-      hostname: keyclock.local
+      hostname: keycloack.local
       port: 443
       protocol: HTTPS
       allowedRoutes:
