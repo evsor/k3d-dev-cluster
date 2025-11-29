@@ -7,17 +7,13 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  sources:
-  - repoURL: 'oci://registry-1.docker.io/bitnamicharts/keycloak'
-    path: .
-    targetRevision: 25.2.0
-    helm:
-      valuesObject:
-        image:
-          repository: bitnamilegacy/keycloak
-        postgresql:
-          image:
-            repository: bitnamilegacy/postgresql
+  source:
+    repoURL: 'https://github.com/evsor/k3d-dev-cluster.git'
+    targetRevision: main
+    path: cluster/components/keycloack
+  helm:
+    valueFiles:
+    - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: keycloack
