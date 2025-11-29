@@ -16,7 +16,8 @@ spec:
         image:
           repository: bitnamilegacy/keycloak
         postgresql:
-          repository: bitnamilegacy/postgresql
+          image:
+            repository: bitnamilegacy/postgresql
   destination:
     server: https://kubernetes.default.svc
     namespace: keycloack
