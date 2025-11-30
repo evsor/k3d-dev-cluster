@@ -18,6 +18,8 @@ spec:
         postgresql:
           image:
             repository: bitnamilegacy/postgresql
+          auth:
+            existingSecret: keycloack-postgresql
         extraEnvVars:
           - name: KC_PROXY_HEADERS
             value: 'xforwarded'
