@@ -23,7 +23,7 @@ spec:
             value: 'xforwarded'
         auth:
           existingSecret: keycloack-admin-credentials
-          existingSecretPasswordKey: admin-password
+          passwordSecretKey: admin-password
   - repoURL: 'https://github.com/evsor/k3d-dev-cluster.git'
     targetRevision: main
     path: cluster/components/keycloack
